@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import LoginForm, forgotPassForm
+from .forms import LoginForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from django.contrib import messages
-
 # Create your views here.
 def loginUser(request):
 	form = LoginForm
@@ -20,16 +17,3 @@ def postloginUser(request):
 		return HttpResponse('success')
 	else:
 		return HttpResponse('fail login')
-def forgotPass(request):
-	form = forgotPassForm
-	return render(request, 'account/forgot-password.html', {'form': form})
-
-def checkGmail(request):
-	email = request.POST['email']
-	user = User.objects.filter(email = email)
-
-	if user.exists():
-		return HttpResponse('exists')
-	else:
-		messages.info(request, 'email does not exits, please check that again!')
-		return redirect('account:forgotPass')

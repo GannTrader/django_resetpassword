@@ -119,3 +119,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+
+# Cổng kết nối bị lỗi có thể đổi thành 587 hoặc 465 hoặc 25 cho phù hợp. Nhiều khi bị nó còn bị block bởi tường lửa hoặc diệt virus
+
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'annakimsohappy@gmail.com'
+EMAIL_HOST_PASSWORD = 'quy!@#456789'
+EMAIL_USE_TLS = True

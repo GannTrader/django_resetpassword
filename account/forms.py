@@ -9,8 +9,9 @@ class LoginForm(forms.Form):
 		'class':'form-control',
 		'placeholder':'enter your password'
 		}))
-class forgotPassForm(forms.Form):
-	email = forms.EmailField(widget = forms.TextInput(attrs = {
-		'class':'form-control',
-		'placeholder':'enter your email to reset password...'
-		}))
+
+class PasswordResetForm(forms.Form):
+    email = forms.EmailField(
+        max_length=254,
+        widget=forms.EmailInput(attrs={'autocomplete': 'email', 'class': 'form-control'})
+    )
